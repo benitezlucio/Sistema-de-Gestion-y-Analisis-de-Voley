@@ -1,3 +1,6 @@
+-- =========================================
+-- CREACIÓN DE VISTAS
+-- =========================================
 CREATE VIEW vista_rendimiento_jugadores AS
 SELECT 
     j.id_jug,
@@ -22,7 +25,9 @@ JOIN Jugadores j ON m.id_jug = j.id_jug
 JOIN Usuarios u ON j.id_usr = u.id_usr
 GROUP BY j.id_jug;
 
-
+-- =========================================
+-- CREACIÓN DE FUNCIONES
+-- =========================================
 
 DELIMITER //
 CREATE FUNCTION fn_promedio_puntos(p_id_jug INT)
@@ -56,6 +61,10 @@ BEGIN
 END //
 DELIMITER ;
 
+-- =========================================
+-- CREACIÓN DE STORED PROCEDURES
+-- =========================================
+
 DELIMITER //
 CREATE PROCEDURE sp_buscar_jugadores_posicion(IN p_pos VARCHAR(30))
 BEGIN
@@ -80,6 +89,10 @@ BEGIN
     WHERE e.id_par = p_id_par;
 END //
 DELIMITER ;
+
+-- =========================================
+-- CREACIÓN DE TRIGGERS
+-- =========================================
 
 DELIMITER //
 CREATE TRIGGER trg_validar_puntos
